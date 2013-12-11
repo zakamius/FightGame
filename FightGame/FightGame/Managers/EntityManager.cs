@@ -5,7 +5,16 @@ using System.Text;
 
 namespace FightGame.Managers
 {
-    class EntityManager
+    public static class EntityManager
     {
+        public static void Update()
+        {
+            Game1.MainPlayer.Update();
+        }
+
+        public static void Draw()
+        {
+            Game1.MainPlayer.Draw();
+        }
     }
 }

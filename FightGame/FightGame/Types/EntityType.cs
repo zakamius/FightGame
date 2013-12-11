@@ -13,9 +13,8 @@ namespace FightGame.Types
 {
     public class EntityType
     {
-        public object state = new object();
         //Difficulty Variables
-        public int health { get; set; }
+        public int health;
         public int energy;
         public int moveSpeed;
 
@@ -25,6 +24,9 @@ namespace FightGame.Types
         //Positional Variables
         public float angle;
         public Vector2 position;
+        public Rectangle boundBox;
+        public int state;
+
 
     }
 }

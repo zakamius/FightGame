@@ -13,9 +13,10 @@ namespace FightGame
 {
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        public Entity.Player MainPlayer;
+        public static GraphicsDeviceManager graphics;
+        public static SpriteBatch spriteBatch;
+        public static Entity.Player MainPlayer;
+        public static Texture2D playerTexture;
 
         public Game1()
             : base()
@@ -26,12 +27,13 @@ namespace FightGame
 
         protected override void Initialize()
         {
-
+            MainPlayer = new Entity.Player();
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
+            playerTexture = Content.Load<Texture2D>("worst");
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
         }
@@ -45,15 +47,16 @@ namespace FightGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            
+            Managers.ManagerManager.Update();
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-
+            spriteBatch.Begin();
+            Managers.ManagerManager.Draw();
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

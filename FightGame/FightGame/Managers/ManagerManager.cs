@@ -9,10 +9,12 @@ namespace FightGame.Managers
     {
         public static void Update()
         {
+            EntityManager.Update();
         }
 
         public static void Draw()
         {
+            EntityManager.Draw();
         }
     }
 }
